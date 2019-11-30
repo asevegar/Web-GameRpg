@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>GameRPG.com</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">GameRPG.COM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          {% if session['loggedin'] %}
+            <a class="nav-item nav-link" href="/logout">logout</a>
+          {% else %}
+            <a class="nav-item nav-link" href="/signup">SignUp</a>
+            <a class="nav-item nav-link" href="/login">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Chose Character</h1>
+      <div class="row">
+        {% for i in datas %}
+          <div class="col-lg-3">
+            <div class="card" style="width: 16rem; height: 200px; margin: 5px;">
+              <div class="card-body">
+                <h5>NickName : {{i['nickname']}}</h5>
+                <h5>Level : {{i['level']}}</h5>
+              </div>
+              <div class="card-footer">
+                <form action="" method="POST">
+                  <input type="hidden" name="id_char" required value="{{i['id_karakter']}}">
+                  <input type="hidden" name="nickname" required value="{{i['nickname']}}">
+                  <input type="hidden" name="level" required value="{{i['level']}}">
+                  <button class="btn btn-block btn-primary">Chose</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="col-lg-3">
+          <a href="/character">
+            <div class="card" style="width: 16rem; height: 200px; margin: 5px;">
+              <div class="card-body">
+                <span><i class="fas fa-plus" style="font-size: 99px; padding-left: 65px; padding-top: 25px;"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

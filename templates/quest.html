@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<h1>Quest</h1>
+	<button class="btn btn-primary" data-toggle="modal" data-target="#tambahquestmodal">Tambah</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>nama Quest</th>
+				<th>option</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for data in hasil %}
+			<tr>
+				<td>{{data['id_quest']}}</td>
+				<td>{{data['nama_quest']}}</td>				
+				<td>hapus/ubah</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}
+{% block modal %}
+<!-- Modal -->
+	<div class="modal fade" id="tambahquestmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form action="" method="POST">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Insert Item</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="nama_quest">Nama Quest</label>
+							<input type="text" id="nama_quest" placeholder="Nama Quest" required name="nama_quest" class="form-control">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary btn-block">Submit!</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
